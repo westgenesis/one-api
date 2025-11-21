@@ -16,6 +16,7 @@ RUN DISABLE_ESLINT_PLUGIN='true' REACT_APP_VERSION=$(cat ./VERSION) npm run buil
 
 FROM golang:alpine AS builder2
 
+ENV GOPROXY=https://goproxy.cn,direct
 RUN apk add --no-cache \
     gcc \
     musl-dev \
