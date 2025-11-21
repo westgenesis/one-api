@@ -665,6 +665,10 @@ const ChannelsTable = () => {
                       >
                         {t('channel.buttons.edit')}
                       </Button>
+
+                      <Button size={'tiny'} as={Link}>
+                        性能监控
+                      </Button>
                     </div>
                   </Table.Cell>
                 </Table.Row>
