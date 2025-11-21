@@ -9,12 +9,12 @@ services:
     restart: always
     command: --log-dir /app/logs
     ports:
-      - "3001:3000"
+      - "3000:3000"
     volumes:
       - ./data/oneapi:/data
       - ./logs:/app/logs
     environment:
-      - SQL_DSN=oneapi:123456@tcp(db:3306)/one-api # 修改此行，或注释掉以使用 SQLite 作为数据库
+      - SQL_DSN=oneapi:123456@tcp(db:3307)/one-api # 修改此行，或注释掉以使用 SQLite 作为数据库
       - REDIS_CONN_STRING=redis://redis
       - SESSION_SECRET=random_string # 修改为随机字符串
       - TZ=Asia/Shanghai
@@ -46,7 +46,7 @@ services:
     volumes:
       - ./data/mysql:/var/lib/mysql # 挂载目录，持久化存储
     ports:
-      - "3306:3306"
+      - "3307:3306"
     environment:
       TZ: Asia/Shanghai # 设置时区
       MYSQL_ROOT_PASSWORD: "OneAPI@justsong" # 设置 root 用户的密码
