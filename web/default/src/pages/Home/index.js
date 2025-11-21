@@ -121,7 +121,7 @@ const Home = () => {
                             {statusState?.status?.version || 'unknown'}
                           </span>
                         </p>
-                        <p
+                        {/* <p
                           style={{
                             display: 'flex',
                             alignItems: 'center',
@@ -139,7 +139,7 @@ const Home = () => {
                           >
                             {t('home.system_status.info.source_link')}
                           </a>
-                        </p>
+                        </p> */}
                         <p
                           style={{
                             display: 'flex',

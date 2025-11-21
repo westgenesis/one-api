@@ -24,7 +24,7 @@ root.render(
             <App />
           </Container>
           <ToastContainer />
-          <Footer />
+          {/* <Footer /> */}
         </BrowserRouter>
       </UserProvider>
     </StatusProvider>

@@ -269,7 +269,7 @@ const Header = () => {
           </Menu.Item>
           {renderButtons(false)}
           <Menu.Menu position='right'>
-            <Dropdown
+            {/* <Dropdown
               item
               trigger={
                 <Icon name='language' style={{ margin: 0, fontSize: '18px' }} />
@@ -283,7 +283,7 @@ const Header = () => {
                 color: '#666',
                 padding: '0 10px',
               }}
-            />
+            /> */}
             {userState.user ? (
               <Dropdown
                 text={userState.user.username}

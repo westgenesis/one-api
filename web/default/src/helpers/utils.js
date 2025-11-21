@@ -1,7 +1,7 @@
-import {toast} from 'react-toastify';
-import {toastConstants} from '../constants';
+import { toast } from 'react-toastify';
+import { toastConstants } from '../constants';
 import React from 'react';
-import {API} from './api';
+import { API } from './api';
 
 const HTMLToastContent = ({ htmlContent }) => {
   return <div dangerouslySetInnerHTML={{ __html: htmlContent }} />;
@@ -23,14 +23,15 @@ export function isRoot() {
 }
 
 export function getSystemName() {
-  let system_name = localStorage.getItem('system_name');
-  if (!system_name) return 'One API';
-  return system_name;
+  return '算力中心管理软件';
+  // let system_name = localStorage.getItem('system_name');
+  // if (!system_name) return '算力中心管理软件';
+  // return system_name;
 }
 
 export function getLogo() {
   let logo = localStorage.getItem('logo');
-  if (!logo) return '/logo.png';
+  if (!logo) return '/logo.svg';
   return logo;
 }
 
@@ -159,7 +160,7 @@ export function timestamp2string(timestamp) {
     second = '0' + second;
   }
   return (
-      year + '-' + month + '-' + day + ' ' + hour + ':' + minute + ':' + second
+    year + '-' + month + '-' + day + ' ' + hour + ':' + minute + ':' + second
   );
 }
 

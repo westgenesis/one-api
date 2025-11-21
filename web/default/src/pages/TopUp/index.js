@@ -92,7 +92,7 @@ const TopUp = () => {
           </Card.Header>
 
           <Grid columns={2} stackable>
-            <Grid.Column>
+            {/* <Grid.Column>
               <Card
                 fluid
                 style={{
@@ -155,7 +155,7 @@ const TopUp = () => {
                   </Card.Description>
                 </Card.Content>
               </Card>
-            </Grid.Column>
+            </Grid.Column> */}
 
             <Grid.Column>
               <Card

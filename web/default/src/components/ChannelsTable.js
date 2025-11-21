@@ -1,7 +1,17 @@
-import React, {useEffect, useState} from 'react';
-import {useTranslation} from 'react-i18next';
-import {Button, Dropdown, Form, Input, Label, Message, Pagination, Popup, Table,} from 'semantic-ui-react';
-import {Link} from 'react-router-dom';
+import React, { useEffect, useState } from 'react';
+import { useTranslation } from 'react-i18next';
+import {
+  Button,
+  Dropdown,
+  Form,
+  Input,
+  Label,
+  Message,
+  Pagination,
+  Popup,
+  Table,
+} from 'semantic-ui-react';
+import { Link } from 'react-router-dom';
 import {
   API,
   loadChannelModels,
@@ -13,8 +23,8 @@ import {
   timestamp2string,
 } from '../helpers';
 
-import {CHANNEL_OPTIONS, ITEMS_PER_PAGE} from '../constants';
-import {renderGroup, renderNumber} from '../helpers/render';
+import { CHANNEL_OPTIONS, ITEMS_PER_PAGE } from '../constants';
+import { renderGroup, renderNumber } from '../helpers/render';
 
 function renderTimestamp(timestamp) {
   return <>{timestamp2string(timestamp)}</>;
@@ -44,9 +54,9 @@ function renderType(type, t) {
 function renderBalance(type, balance, t) {
   switch (type) {
     case 1: // OpenAI
-        if (balance === 0) {
-            return <span>{t('channel.table.balance_not_supported')}</span>;
-        }
+      if (balance === 0) {
+        return <span>{t('channel.table.balance_not_supported')}</span>;
+      }
       return <span>${balance.toFixed(2)}</span>;
     case 4: // CloseAI
       return <span>¥{balance.toFixed(2)}</span>;
@@ -423,7 +433,7 @@ const ChannelsTable = () => {
           onChange={handleKeywordChange}
         />
       </Form>
-      {showPrompt && (
+      {/* {showPrompt && (
         <Message
           onDismiss={() => {
             setShowPrompt(false);
@@ -436,7 +446,7 @@ const ChannelsTable = () => {
           <br />
           {t('channel.detail_notice')}
         </Message>
-      )}
+      )} */}
       <Table basic={'very'} compact size='small'>
         <Table.Header>
           <Table.Row>
