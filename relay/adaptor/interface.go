@@ -1,11 +1,12 @@
 package adaptor
 
 import (
-	"github.com/gin-gonic/gin"
-	"github.com/songquanpeng/one-api/relay/meta"
-	"github.com/songquanpeng/one-api/relay/model"
 	"io"
 	"net/http"
+
+	"github.com/gin-gonic/gin"
+	"github.com/westgenesis/one-api/relay/meta"
+	"github.com/westgenesis/one-api/relay/model"
 )
 
 type Adaptor interface {

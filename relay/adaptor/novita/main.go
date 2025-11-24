@@ -3,8 +3,8 @@ package novita
 import (
 	"fmt"
 
-	"github.com/songquanpeng/one-api/relay/meta"
-	"github.com/songquanpeng/one-api/relay/relaymode"
+	"github.com/westgenesis/one-api/relay/meta"
+	"github.com/westgenesis/one-api/relay/relaymode"
 )
 
 func GetRequestURL(meta *meta.Meta) (string, error) {

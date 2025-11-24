@@ -1,9 +1,9 @@
 package router
 
 import (
-	"github.com/songquanpeng/one-api/controller"
-	"github.com/songquanpeng/one-api/controller/auth"
-	"github.com/songquanpeng/one-api/middleware"
+	"github.com/westgenesis/one-api/controller"
+	"github.com/westgenesis/one-api/controller/auth"
+	"github.com/westgenesis/one-api/middleware"
 
 	"github.com/gin-contrib/gzip"
 	"github.com/gin-gonic/gin"

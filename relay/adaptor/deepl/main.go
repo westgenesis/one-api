@@ -2,16 +2,17 @@ package deepl
 
 import (
 	"encoding/json"
-	"github.com/gin-gonic/gin"
-	"github.com/songquanpeng/one-api/common"
-	"github.com/songquanpeng/one-api/common/helper"
-	"github.com/songquanpeng/one-api/relay/adaptor/openai"
-	"github.com/songquanpeng/one-api/relay/constant"
-	"github.com/songquanpeng/one-api/relay/constant/finishreason"
-	"github.com/songquanpeng/one-api/relay/constant/role"
-	"github.com/songquanpeng/one-api/relay/model"
 	"io"
 	"net/http"
+
+	"github.com/gin-gonic/gin"
+	"github.com/westgenesis/one-api/common"
+	"github.com/westgenesis/one-api/common/helper"
+	"github.com/westgenesis/one-api/relay/adaptor/openai"
+	"github.com/westgenesis/one-api/relay/constant"
+	"github.com/westgenesis/one-api/relay/constant/finishreason"
+	"github.com/westgenesis/one-api/relay/constant/role"
+	"github.com/westgenesis/one-api/relay/model"
 )
 
 // https://developers.deepl.com/docs/getting-started/your-first-api-request

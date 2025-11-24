@@ -7,10 +7,10 @@ import (
 
 	"github.com/gin-gonic/gin"
 
-	"github.com/songquanpeng/one-api/common/ctxkey"
-	"github.com/songquanpeng/one-api/common/logger"
-	"github.com/songquanpeng/one-api/model"
-	"github.com/songquanpeng/one-api/relay/channeltype"
+	"github.com/westgenesis/one-api/common/ctxkey"
+	"github.com/westgenesis/one-api/common/logger"
+	"github.com/westgenesis/one-api/model"
+	"github.com/westgenesis/one-api/relay/channeltype"
 )
 
 type ModelRequest struct {

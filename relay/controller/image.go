@@ -11,16 +11,16 @@ import (
 
 	"github.com/gin-gonic/gin"
 
-	"github.com/songquanpeng/one-api/common"
-	"github.com/songquanpeng/one-api/common/ctxkey"
-	"github.com/songquanpeng/one-api/common/logger"
-	"github.com/songquanpeng/one-api/model"
-	"github.com/songquanpeng/one-api/relay"
-	"github.com/songquanpeng/one-api/relay/adaptor/openai"
-	billingratio "github.com/songquanpeng/one-api/relay/billing/ratio"
-	"github.com/songquanpeng/one-api/relay/channeltype"
-	"github.com/songquanpeng/one-api/relay/meta"
-	relaymodel "github.com/songquanpeng/one-api/relay/model"
+	"github.com/westgenesis/one-api/common"
+	"github.com/westgenesis/one-api/common/ctxkey"
+	"github.com/westgenesis/one-api/common/logger"
+	"github.com/westgenesis/one-api/model"
+	"github.com/westgenesis/one-api/relay"
+	"github.com/westgenesis/one-api/relay/adaptor/openai"
+	billingratio "github.com/westgenesis/one-api/relay/billing/ratio"
+	"github.com/westgenesis/one-api/relay/channeltype"
+	"github.com/westgenesis/one-api/relay/meta"
+	relaymodel "github.com/westgenesis/one-api/relay/model"
 )
 
 func getImageRequest(c *gin.Context, _ int) (*relaymodel.ImageRequest, error) {

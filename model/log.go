@@ -6,10 +6,10 @@ import (
 
 	"gorm.io/gorm"
 
-	"github.com/songquanpeng/one-api/common"
-	"github.com/songquanpeng/one-api/common/config"
-	"github.com/songquanpeng/one-api/common/helper"
-	"github.com/songquanpeng/one-api/common/logger"
+	"github.com/westgenesis/one-api/common"
+	"github.com/westgenesis/one-api/common/config"
+	"github.com/westgenesis/one-api/common/helper"
+	"github.com/westgenesis/one-api/common/logger"
 )
 
 type Log struct {

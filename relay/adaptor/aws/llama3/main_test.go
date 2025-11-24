@@ -3,9 +3,9 @@ package aws_test
 import (
 	"testing"
 
-	aws "github.com/songquanpeng/one-api/relay/adaptor/aws/llama3"
-	relaymodel "github.com/songquanpeng/one-api/relay/model"
 	"github.com/stretchr/testify/assert"
+	aws "github.com/westgenesis/one-api/relay/adaptor/aws/llama3"
+	relaymodel "github.com/westgenesis/one-api/relay/model"
 )
 
 func TestRenderPrompt(t *testing.T) {

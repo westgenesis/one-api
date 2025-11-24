@@ -5,10 +5,10 @@ import (
 	"net/http"
 	"strings"
 
-	"github.com/songquanpeng/one-api/common/config"
-	"github.com/songquanpeng/one-api/common/helper"
-	"github.com/songquanpeng/one-api/common/i18n"
-	"github.com/songquanpeng/one-api/model"
+	"github.com/westgenesis/one-api/common/config"
+	"github.com/westgenesis/one-api/common/helper"
+	"github.com/westgenesis/one-api/common/i18n"
+	"github.com/westgenesis/one-api/model"
 
 	"github.com/gin-gonic/gin"
 )

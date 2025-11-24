@@ -12,10 +12,10 @@ import (
 	"github.com/gin-contrib/sessions"
 	"github.com/gin-gonic/gin"
 
-	"github.com/songquanpeng/one-api/common/config"
-	"github.com/songquanpeng/one-api/common/logger"
-	"github.com/songquanpeng/one-api/controller"
-	"github.com/songquanpeng/one-api/model"
+	"github.com/westgenesis/one-api/common/config"
+	"github.com/westgenesis/one-api/common/logger"
+	"github.com/westgenesis/one-api/controller"
+	"github.com/westgenesis/one-api/model"
 )
 
 type OidcResponse struct {

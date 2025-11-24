@@ -8,22 +8,22 @@ import (
 	"net/http"
 	"strings"
 
-	"github.com/songquanpeng/one-api/common/helper"
-	"github.com/songquanpeng/one-api/relay/constant/role"
+	"github.com/westgenesis/one-api/common/helper"
+	"github.com/westgenesis/one-api/relay/constant/role"
 
 	"github.com/gin-gonic/gin"
 
-	"github.com/songquanpeng/one-api/common"
-	"github.com/songquanpeng/one-api/common/config"
-	"github.com/songquanpeng/one-api/common/logger"
-	"github.com/songquanpeng/one-api/model"
-	"github.com/songquanpeng/one-api/relay/adaptor/openai"
-	billingratio "github.com/songquanpeng/one-api/relay/billing/ratio"
-	"github.com/songquanpeng/one-api/relay/channeltype"
-	"github.com/songquanpeng/one-api/relay/controller/validator"
-	"github.com/songquanpeng/one-api/relay/meta"
-	relaymodel "github.com/songquanpeng/one-api/relay/model"
-	"github.com/songquanpeng/one-api/relay/relaymode"
+	"github.com/westgenesis/one-api/common"
+	"github.com/westgenesis/one-api/common/config"
+	"github.com/westgenesis/one-api/common/logger"
+	"github.com/westgenesis/one-api/model"
+	"github.com/westgenesis/one-api/relay/adaptor/openai"
+	billingratio "github.com/westgenesis/one-api/relay/billing/ratio"
+	"github.com/westgenesis/one-api/relay/channeltype"
+	"github.com/westgenesis/one-api/relay/controller/validator"
+	"github.com/westgenesis/one-api/relay/meta"
+	relaymodel "github.com/westgenesis/one-api/relay/model"
+	"github.com/westgenesis/one-api/relay/relaymode"
 )
 
 func getAndValidateTextRequest(c *gin.Context, relayMode int) (*relaymodel.GeneralOpenAIRequest, error) {

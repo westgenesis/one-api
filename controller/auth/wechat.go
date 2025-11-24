@@ -10,10 +10,10 @@ import (
 
 	"github.com/gin-gonic/gin"
 
-	"github.com/songquanpeng/one-api/common/config"
-	"github.com/songquanpeng/one-api/common/ctxkey"
-	"github.com/songquanpeng/one-api/controller"
-	"github.com/songquanpeng/one-api/model"
+	"github.com/westgenesis/one-api/common/config"
+	"github.com/westgenesis/one-api/common/ctxkey"
+	"github.com/westgenesis/one-api/controller"
+	"github.com/westgenesis/one-api/model"
 )
 
 type wechatLoginResponse struct {

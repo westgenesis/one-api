@@ -2,11 +2,12 @@ package middleware
 
 import (
 	"fmt"
-	"github.com/gin-gonic/gin"
-	"github.com/songquanpeng/one-api/common"
-	"github.com/songquanpeng/one-api/common/helper"
-	"github.com/songquanpeng/one-api/common/logger"
 	"strings"
+
+	"github.com/gin-gonic/gin"
+	"github.com/westgenesis/one-api/common"
+	"github.com/westgenesis/one-api/common/helper"
+	"github.com/westgenesis/one-api/common/logger"
 )
 
 func abortWithMessage(c *gin.Context, statusCode int, message string) {

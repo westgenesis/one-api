@@ -3,21 +3,22 @@ package zhipu
 import (
 	"bufio"
 	"encoding/json"
-	"github.com/songquanpeng/one-api/common/render"
 	"io"
 	"net/http"
 	"strings"
 	"sync"
 	"time"
 
+	"github.com/westgenesis/one-api/common/render"
+
 	"github.com/gin-gonic/gin"
 	"github.com/golang-jwt/jwt"
-	"github.com/songquanpeng/one-api/common"
-	"github.com/songquanpeng/one-api/common/helper"
-	"github.com/songquanpeng/one-api/common/logger"
-	"github.com/songquanpeng/one-api/relay/adaptor/openai"
-	"github.com/songquanpeng/one-api/relay/constant"
-	"github.com/songquanpeng/one-api/relay/model"
+	"github.com/westgenesis/one-api/common"
+	"github.com/westgenesis/one-api/common/helper"
+	"github.com/westgenesis/one-api/common/logger"
+	"github.com/westgenesis/one-api/relay/adaptor/openai"
+	"github.com/westgenesis/one-api/relay/constant"
+	"github.com/westgenesis/one-api/relay/model"
 )
 
 // https://open.bigmodel.cn/doc/api#chatglm_std

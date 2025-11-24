@@ -2,15 +2,16 @@ package controller
 
 import (
 	"fmt"
-	"github.com/gin-gonic/gin"
-	"github.com/songquanpeng/one-api/common/config"
-	"github.com/songquanpeng/one-api/common/ctxkey"
-	"github.com/songquanpeng/one-api/common/helper"
-	"github.com/songquanpeng/one-api/common/network"
-	"github.com/songquanpeng/one-api/common/random"
-	"github.com/songquanpeng/one-api/model"
 	"net/http"
 	"strconv"
+
+	"github.com/gin-gonic/gin"
+	"github.com/westgenesis/one-api/common/config"
+	"github.com/westgenesis/one-api/common/ctxkey"
+	"github.com/westgenesis/one-api/common/helper"
+	"github.com/westgenesis/one-api/common/network"
+	"github.com/westgenesis/one-api/common/random"
+	"github.com/westgenesis/one-api/model"
 )
 
 func GetAllTokens(c *gin.Context) {

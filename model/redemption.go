@@ -7,8 +7,8 @@ import (
 
 	"gorm.io/gorm"
 
-	"github.com/songquanpeng/one-api/common"
-	"github.com/songquanpeng/one-api/common/helper"
+	"github.com/westgenesis/one-api/common"
+	"github.com/westgenesis/one-api/common/helper"
 )
 
 const (

@@ -3,18 +3,19 @@ package palm
 import (
 	"encoding/json"
 	"fmt"
-	"github.com/songquanpeng/one-api/common/render"
 	"io"
 	"net/http"
 
+	"github.com/westgenesis/one-api/common/render"
+
 	"github.com/gin-gonic/gin"
-	"github.com/songquanpeng/one-api/common"
-	"github.com/songquanpeng/one-api/common/helper"
-	"github.com/songquanpeng/one-api/common/logger"
-	"github.com/songquanpeng/one-api/common/random"
-	"github.com/songquanpeng/one-api/relay/adaptor/openai"
-	"github.com/songquanpeng/one-api/relay/constant"
-	"github.com/songquanpeng/one-api/relay/model"
+	"github.com/westgenesis/one-api/common"
+	"github.com/westgenesis/one-api/common/helper"
+	"github.com/westgenesis/one-api/common/logger"
+	"github.com/westgenesis/one-api/common/random"
+	"github.com/westgenesis/one-api/relay/adaptor/openai"
+	"github.com/westgenesis/one-api/relay/constant"
+	"github.com/westgenesis/one-api/relay/model"
 )
 
 // https://developers.generativeai.google/api/rest/generativelanguage/models/generateMessage#request-body

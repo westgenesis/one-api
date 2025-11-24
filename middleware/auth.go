@@ -2,14 +2,15 @@ package middleware
 
 import (
 	"fmt"
-	"github.com/gin-contrib/sessions"
-	"github.com/gin-gonic/gin"
-	"github.com/songquanpeng/one-api/common/blacklist"
-	"github.com/songquanpeng/one-api/common/ctxkey"
-	"github.com/songquanpeng/one-api/common/network"
-	"github.com/songquanpeng/one-api/model"
 	"net/http"
 	"strings"
+
+	"github.com/gin-contrib/sessions"
+	"github.com/gin-gonic/gin"
+	"github.com/westgenesis/one-api/common/blacklist"
+	"github.com/westgenesis/one-api/common/ctxkey"
+	"github.com/westgenesis/one-api/common/network"
+	"github.com/westgenesis/one-api/model"
 )
 
 func authHelper(c *gin.Context, minRole int) {

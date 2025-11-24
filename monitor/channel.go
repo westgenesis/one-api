@@ -3,10 +3,10 @@ package monitor
 import (
 	"fmt"
 
-	"github.com/songquanpeng/one-api/common/config"
-	"github.com/songquanpeng/one-api/common/logger"
-	"github.com/songquanpeng/one-api/common/message"
-	"github.com/songquanpeng/one-api/model"
+	"github.com/westgenesis/one-api/common/config"
+	"github.com/westgenesis/one-api/common/logger"
+	"github.com/westgenesis/one-api/common/message"
+	"github.com/westgenesis/one-api/model"
 )
 
 func notifyRootUser(subject string, content string) {
