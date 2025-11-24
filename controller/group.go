@@ -8,6 +8,15 @@ import (
 	billingratio "github.com/westgenesis/one-api/relay/billing/ratio"
 )
 
+type GroupRequest struct {
+	Name  string  `json:"name" binding:"required"`
+	Ratio float64 `json:"ratio" binding:"required"`
+}
+
+type DeleteGroupRequest struct {
+	Name string `json:"name" binding:"required"`
+}
+
 func GetGroups(c *gin.Context) {
 	groupNames := make([]string, 0)
 	for groupName := range billingratio.GroupRatio {
@@ -20,34 +29,69 @@ func GetGroups(c *gin.Context) {
 	})
 }
 
-// CreateGroup 创建或更新分组，并保存到文件。
-func CreateGroup(name string, ratio float64) error {
-	billingratio.groupRatioLock.Lock()
-	defer billingratio.groupRatioLock.Unlock()
+func CreateGroupHandler(c *gin.Context) {
+	var req GroupRequest
+	if err := c.ShouldBindJSON(&req); err != nil {
+		c.JSON(http.StatusBadRequest, gin.H{
+			"success": false,
+			"message": "invalid request: " + err.Error(),
+		})
+		return
+	}
 
-	billingratio.GroupRatio[name] = ratio
+	billingratio.GroupRatio[req.Name] = req.Ratio
+	if err := billingratio.SaveGroupRatioToFile(); err != nil {
+		c.JSON(http.StatusInternalServerError, gin.H{
+			"success": false,
+			"message": "failed to save group ratio: " + err.Error(),
+		})
+		return
+	}
 
-	return billingratio.saveGroupRatioToFile()
+	c.JSON(http.StatusOK, gin.H{
+		"success": true,
+		"message": "group created/updated",
+		"data":    req,
+	})
 }
 
-// DeleteGroup 删除分组，并保存到文件。
-func DeleteGroup(name string) {
-	billingratio.groupRatioLock.Lock()
-	defer billingratio.groupRatioLock.Unlock()
+func DeleteGroupHandler(c *gin.Context) {
+	var req DeleteGroupRequest
+	if err := c.ShouldBindJSON(&req); err != nil {
+		c.JSON(http.StatusBadRequest, gin.H{
+			"success": false,
+			"message": "invalid request: " + err.Error(),
+		})
+		return
+	}
 
-	if _, exists := billingratio.GroupRatio[name]; exists {
-		delete(billingratio.GroupRatio, name)
-		logger.SysLog("group '" + name + "' has been deleted")
+	if _, exists := billingratio.GroupRatio[req.Name]; exists {
+		delete(billingratio.GroupRatio, req.Name)
+		logger.SysLog("group '" + req.Name + "' has been deleted")
 
-		if err := billingratio.saveGroupRatioToFile(); err != nil {
-			logger.SysError("failed to save group ratio after deletion: " + err.Error())
+		if err := billingratio.SaveGroupRatioToFile(); err != nil {
+			c.JSON(http.StatusInternalServerError, gin.H{
+				"success": false,
+				"message": "failed to save group ratio: " + err.Error(),
+			})
+			return
 		}
+
+		c.JSON(http.StatusOK, gin.H{
+			"success": true,
+			"message": "group deleted",
+		})
+	} else {
+		c.JSON(http.StatusNotFound, gin.H{
+			"success": false,
+			"message": "group not found",
+		})
 	}
 }
 
 func GetAllGroupNames() []string {
-	billingratio.groupRatioLock.RLock()
-	defer billingratio.groupRatioLock.RUnlock()
+	billingratio.GroupRatioLock.RLock()
+	defer billingratio.GroupRatioLock.RUnlock()
 
 	names := make([]string, 0, len(billingratio.GroupRatio))
 	for name := range billingratio.GroupRatio {

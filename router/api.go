@@ -116,6 +116,8 @@ func SetApiRouter(router *gin.Engine) {
 		groupRoute.Use(middleware.AdminAuth())
 		{
 			groupRoute.GET("/", controller.GetGroups)
+			groupRoute.POST("/create", middleware.UserAuth(), controller.CreateGroupHandler)
+			groupRoute.POST("/delete", middleware.UserAuth(), controller.DeleteGroupHandler)
 		}
 	}
 }

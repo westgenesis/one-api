@@ -2,7 +2,6 @@ package ratio
 
 import (
 	"encoding/json"
-	"io/ioutil"
 	"os"
 	"sync"
 
@@ -11,7 +10,7 @@ import (
 
 const ratioFileName = "group_ratio.json"
 
-var groupRatioLock sync.RWMutex
+var GroupRatioLock sync.RWMutex
 var GroupRatio = map[string]float64{
 	"default": 1,
 	"vip":     1,
@@ -22,7 +21,7 @@ var GroupRatio = map[string]float64{
 func init() {
 	if err := loadGroupRatioFromFile(); err != nil {
 		// 如果加载失败，则使用上面定义的默认值，并尝试将默认值保存到文件
-		if err := saveGroupRatioToFile(); err != nil {
+		if err := SaveGroupRatioToFile(); err != nil {
 			logger.SysError("failed to save default group ratio: " + err.Error())
 		}
 	} else {
@@ -34,32 +33,37 @@ func init() {
 
 // loadGroupRatioFromFile 从本地文件加载 GroupRatio。
 func loadGroupRatioFromFile() error {
-	groupRatioLock.Lock()
-	defer groupRatioLock.Unlock()
-
-	// 检查文件是否存在
+	// 不加锁，内部 SaveGroupRatioToFile 已加锁
 	if _, err := os.Stat(ratioFileName); os.IsNotExist(err) {
-		// 文件不存在，不认为是错误，使用内存中的默认值
+		GroupRatio = map[string]float64{
+			"default": 1,
+			"vip":     1,
+			"svip":    1,
+		}
+		if err := SaveGroupRatioToFile(); err != nil {
+			logger.SysError("failed to create default group ratio file: " + err.Error())
+			return err
+		}
+		logger.SysLog("created default group ratio file: " + ratioFileName)
 		return nil
 	}
 
-	data, err := ioutil.ReadFile(ratioFileName)
+	data, err := os.ReadFile(ratioFileName)
 	if err != nil {
 		return err
 	}
 
-	// 重新初始化 GroupRatio 以确保所有旧数据被替换
+	GroupRatioLock.Lock()
+	defer GroupRatioLock.Unlock()
 	GroupRatio = make(map[string]float64)
 	return json.Unmarshal(data, &GroupRatio)
 }
 
 // saveGroupRatioToFile 将 GroupRatio 保存到本地文件。
 // 这个函数应该在 groupRatioLock.Lock() 保护下调用。
-func saveGroupRatioToFile() error {
-	// 注意：这里我们假设调用方（如 CreateGroup/DeleteGroup）已经持有了 Lock。
-	// 但为了健壮性，我们在这里重新获取，以防在其他地方调用。
-	groupRatioLock.RLock()
-	defer groupRatioLock.RUnlock()
+func SaveGroupRatioToFile() error {
+	GroupRatioLock.RLock()
+	defer GroupRatioLock.RUnlock()
 
 	jsonBytes, err := json.MarshalIndent(GroupRatio, "", "  ")
 	if err != nil {
@@ -67,7 +71,7 @@ func saveGroupRatioToFile() error {
 	}
 
 	// 使用 0644 权限写入文件
-	err = ioutil.WriteFile(ratioFileName, jsonBytes, 0644)
+	err = os.WriteFile(ratioFileName, jsonBytes, 0644)
 	if err != nil {
 		return err
 	}
@@ -83,15 +87,15 @@ func GroupRatio2JSONString() string {
 }
 
 func UpdateGroupRatioByJSONString(jsonStr string) error {
-	groupRatioLock.Lock()
-	defer groupRatioLock.Unlock()
+	GroupRatioLock.Lock()
+	defer GroupRatioLock.Unlock()
 	GroupRatio = make(map[string]float64)
 	return json.Unmarshal([]byte(jsonStr), &GroupRatio)
 }
 
 func GetGroupRatio(name string) float64 {
-	groupRatioLock.RLock()
-	defer groupRatioLock.RUnlock()
+	GroupRatioLock.RLock()
+	defer GroupRatioLock.RUnlock()
 	ratio, ok := GroupRatio[name]
 	if !ok {
 		logger.SysError("group ratio not found: " + name)
