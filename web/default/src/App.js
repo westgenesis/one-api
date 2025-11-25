@@ -2,6 +2,7 @@ import React, { lazy, Suspense, useContext, useEffect } from 'react';
 import { Route, Routes } from 'react-router-dom';
 import Loading from './components/Loading';
 import User from './pages/User';
+import Group from './pages/Group';
 import { PrivateRoute } from './components/PrivateRoute';
 import RegisterForm from './components/RegisterForm';
 import LoginForm from './components/LoginForm';
@@ -179,6 +180,14 @@ function App() {
         element={
           <PrivateRoute>
             <User />
+          </PrivateRoute>
+        }
+      />
+      <Route
+        path='/group'
+        element={
+          <PrivateRoute>
+            <Group />
           </PrivateRoute>
         }
       />

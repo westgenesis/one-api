@@ -6,6 +6,7 @@
     "redemption": "额度配置",
     "topup": "额度中心",
     "user": "用户",
+    "group": "分组",
     "dashboard": "总览",
     "log": "日志",
     "setting": "设置",
@@ -410,6 +411,9 @@
       "promote": "提升",
       "demote": "降级"
     }
+  },
+  "group": {
+    "title": "分组管理"
   },
   "dashboard": {
     "charts": {

@@ -52,6 +52,12 @@ let headerButtons = [
     admin: true,
   },
   {
+    name: 'header.group',
+    to: '/group',
+    icon: 'group',
+    admin: true,
+  },
+  {
     name: 'header.dashboard',
     to: '/dashboard',
     icon: 'chart bar',
@@ -168,7 +174,7 @@ const Header = () => {
           <Container
             style={{
               width: '100%',
-              maxWidth: isMobile() ? '100%' : '1200px',
+              maxWidth: isMobile() ? '100%' : '1400px',
               padding: isMobile() ? '0 10px' : '0 20px',
             }}
           >
@@ -251,7 +257,7 @@ const Header = () => {
         <Container
           style={{
             width: '100%',
-            maxWidth: isMobile() ? '100%' : '1200px',
+            maxWidth: isMobile() ? '100%' : '1400px',
             padding: isMobile() ? '0 10px' : '0 20px',
           }}
         >
