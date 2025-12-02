@@ -1,8 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import { BrowserRouter } from 'react-router-dom';
-import { Container } from 'semantic-ui-react';
-import App from './App';
+
+import LayoutContainer from './Container';
 import Header from './components/Header';
 import Footer from './components/Footer';
 import 'semantic-ui-css/semantic.min.css';
@@ -20,9 +20,7 @@ root.render(
       <UserProvider>
         <BrowserRouter>
           <Header />
-          <Container className={'main-content'}>
-            <App />
-          </Container>
+          <LayoutContainer />
           <ToastContainer />
           {/* <Footer /> */}
         </BrowserRouter>

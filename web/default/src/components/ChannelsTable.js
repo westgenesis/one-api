@@ -666,7 +666,16 @@ const ChannelsTable = () => {
                         {t('channel.buttons.edit')}
                       </Button>
 
-                      <Button size={'tiny'} as={Link}>
+                      <Button
+                        size={'tiny'}
+                        as={Link}
+                        to={
+                          '/monitor?base_url=' +
+                          encodeURIComponent(channel.base_url) +
+                          '&name=' +
+                          encodeURIComponent(channel.name)
+                        }
+                      >
                         性能监控
                       </Button>
                     </div>
