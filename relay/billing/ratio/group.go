@@ -13,8 +13,6 @@ const ratioFileName = "group_ratio.json"
 var GroupRatioLock sync.RWMutex
 var GroupRatio = map[string]float64{
 	"default": 1,
-	"vip":     1,
-	"svip":    1,
 }
 
 // init 函数在包被导入时自动执行，用于从文件加载初始数据。
@@ -35,11 +33,6 @@ func init() {
 func loadGroupRatioFromFile() error {
 	// 不加锁，内部 SaveGroupRatioToFile 已加锁
 	if _, err := os.Stat(ratioFileName); os.IsNotExist(err) {
-		GroupRatio = map[string]float64{
-			"default": 1,
-			"vip":     1,
-			"svip":    1,
-		}
 		if err := SaveGroupRatioToFile(); err != nil {
 			logger.SysError("failed to create default group ratio file: " + err.Error())
 			return err
@@ -94,12 +87,5 @@ func UpdateGroupRatioByJSONString(jsonStr string) error {
 }
 
 func GetGroupRatio(name string) float64 {
-	GroupRatioLock.RLock()
-	defer GroupRatioLock.RUnlock()
-	ratio, ok := GroupRatio[name]
-	if !ok {
-		logger.SysError("group ratio not found: " + name)
-		return 1
-	}
-	return ratio
+	return 1
 }
