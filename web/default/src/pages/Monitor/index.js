@@ -5,12 +5,18 @@ import { TabPane, Tab } from 'semantic-ui-react';
 const Monitor = () => {
   const [searchParams] = useSearchParams();
 
+  const baseUrl = searchParams.get('base_url');
+
+  const protocol = new URL(baseUrl).protocol; // protocol = "http:"
+  const hostname = new URL(baseUrl).hostname; // hostname = "127.0.0.1"
+  const basePath = `${protocol}//${hostname}:13000`;
+
   const renderIframe = (title, path) => (
     <TabPane attached={false}>
       <iframe
         style={{ width: '100%', height: '100%' }}
         title={title}
-        src={`${searchParams.get('base_url')}:13000${path}`}
+        src={`${basePath}${path}`}
       ></iframe>
     </TabPane>
   );
