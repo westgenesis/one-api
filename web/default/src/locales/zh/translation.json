@@ -729,7 +729,7 @@
   },
   "about": {
     "title": "关于",
-    "description": "算力中心管理软件 是一个开源的接口管理和代理平台。",
+    "description": "算力中心管理软件是一个智行者开发的接口管理和代理平台。",
     "repository": "项目地址：",
     "loading_failed": "加载失败"
   },
