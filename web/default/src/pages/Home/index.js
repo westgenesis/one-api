@@ -104,7 +104,10 @@ const Home = () => {
                           <span style={{ fontWeight: 'bold' }}>
                             {t('home.system_status.info.name')}
                           </span>
-                          <span>{statusState?.status?.system_name}</span>
+                          <span>
+                            {/* {statusState?.status?.system_name} */}
+                            算力中心管理软件
+                          </span>
                         </p>
                         <p
                           style={{
@@ -118,7 +121,8 @@ const Home = () => {
                             {t('home.system_status.info.version')}
                           </span>
                           <span>
-                            {statusState?.status?.version || 'unknown'}
+                            {/* {statusState?.status?.version || 'unknown'} */}
+                            1.0
                           </span>
                         </p>
                         {/* <p
